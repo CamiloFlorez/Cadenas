@@ -140,9 +140,24 @@ void MatrizL::L(char &_pX,char &_pY,int &_pL,int &_pD,int _m,int _n){
 //PROGRAMA PRINCIPAL	
      
     int main(){
-     	
-  	char Char_A[256];char Char_B[256];//ACA DEFINO DOS VECTORES DE 256 ELEMENTOS PARA CARGAR LAS CADENAS A COMPARAR
-  	int i,j,_m,_n;
+    
+    /**var char Char_A: Esta variable tipo arreglo char sirve para almacenar una cadena de caracteres #1 con una longitud máxima igual a 256 */ 	
+  	char Char_A[256];
+  	
+  	/** La variable Char_B, tipo char, es un arreglo que sirve para almacenar los caracteres de una cadena #2, con una longitud máxima igual a 256 */
+    char Char_B[256];
+    
+    /** Esta variable se usa para barrer las filas de la matriz L y P (Procedencia) */
+  	int i;
+  	
+  	/** La variable entera j se usa para barrer las columnas de las matrices L y de P (Procedencia) */
+    int j;
+    
+    /** _m es una variable tipo entero que define el número de filas de las matrices L y P (Procedencia) */
+    int _m;
+    
+    /** _n es una variable tipp entero que define el número de columnas de las matrices L y P (Procedencia) */
+    int _n;
   
    	printf ("Ingrese la primera cadena: ");
   	gets (Char_A);// EN ESTA VARIABLE SE ALMACENA LA PRIMERA CADENA
@@ -151,11 +166,23 @@ void MatrizL::L(char &_pX,char &_pY,int &_pL,int &_pD,int _m,int _n){
   	_m=(int)strlen(Char_A);//ACA SE CALCULA LA LONGITUD DE LA PRIMERA CADENA Y SE ALMACENA EN LA VARIABLE "m"
   	_n=(int)strlen(Char_B);//ACA SE CALCULA LA LONGITUD DE LA SEGUNDA CADENA Y SE ALMACENA EL RESULTADO EN LA VARIABLE "n"
   	
-  	int L[_m+1][_n+1];//ACA SE CREA UNA MATRIZ CON m+1 FILAS Y n+1 COLUMNAS
-  	int D[_m][_n];
+  	/** La matriz L de tipo entero es una variable bidimensional que se emplea para almacenar las longitudes de la subcadena común existentes entre las cadenas a comparar */
+  	int L[_m+1][_n+1];
+  	
+   /** La matriz D tipo entero sirve para almacenar la información de procedencia, P: D[i,j]=10, equivale a "D" */
+    int D[_m][_n];
   
-  	char *_pX; char *_pY; int *_pL; int *_pD;//ACÁ SE DEFINEN LOS PUNTEROS QUE SERVIRAN PARA RECORRER LOS 2 STRINGS ALMACENADOS EN Char_A y Char_B, Y UN PUNTERO PARA ALMACENAR
-  	//LAS LONGITUDES EN LA MATRIZ L(i,j)
+  /** Esta variable es un puntero tipo char que apunta a la dirección inicial del arreglo Char_A */
+   	char *_pX;
+   	
+ /** Esta variable es un puntero tipo char que apunta a la dirección inicial del arreglo Char_B */
+    char *_pY;
+    
+ /** La variable ilustrada es un puntero tipo entero que apunta a la primera direcciòn de memoria de la matriz L */
+    int *_pL;
+    
+ /** La variable ilustrada es un puntero tipo entero que apunta a la primera direcciòn de memoria de la matriz de procedencia P */
+    int *_pD;
   
   	_pX=&Char_A[0];//EN EL PUNTERO pX SE ALMACENA LA DIRECCION DE MEMORIA DONDE INICIA EL PRIMER ELEMENTO DEL VECTOR Char_A
   	_pY=&Char_B[0];//EN EL PUNTERO pY SE ALMACENA LA DIRECCION DE MEMORIA DONDE INICIA EL PRIMER ELEMENTO DEL VECTOR Char_B
@@ -194,7 +221,9 @@ void MatrizL::L(char &_pX,char &_pY,int &_pL,int &_pD,int _m,int _n){
 			
 	}
          
-         
+/** void printsec
+    * \brief La función printsec sirve para imprimir en pantalla la subcadena común de máxima longitud existente en dos cadenas de longitudes arbitrarias
+    */
 		 
 void printsec(char *_pX,int *_pL,int *_pD,int i, int j,int _n){
 	
